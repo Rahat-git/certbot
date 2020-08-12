@@ -2015,7 +2015,7 @@ UNLIKELY_EOF
         # original copy so the shell can continue to read it unmolested. mv across
         # filesystems is non-atomic, doing `rm dest, cp src dest, rm src`, but the
         # cp is unlikely to fail if the rm doesn't.
-        mv -f "$TEMP_DIR/letsencrypt-auto.permission-clone" "$0"
+        #mv -f "$TEMP_DIR/letsencrypt-auto.permission-clone" "$0"
       fi  # A newer version is available.
     fi
   fi  # Self-upgrading is allowed.

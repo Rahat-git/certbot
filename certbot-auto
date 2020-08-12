@@ -45,7 +45,7 @@ Help for certbot itself cannot be provided until it is installed.
   -h, --help                                print this help
   -n, --non-interactive, --noninteractive   run without asking for user input
   --no-bootstrap                            do not install OS dependencies
-  --no-permissions-check                    do not warn about file system permissions
+  # --no-permissions-check                    do not warn about file system permissions
   --no-self-upgrade                         do not download updates
   --os-packages-only                        install OS dependencies and exit
   --install-only                            install certbot, upgrade if needed, and exit
@@ -68,8 +68,8 @@ for arg in "$@" ; do
       # Do not upgrade this script (also prevents client upgrades, because each
       # copy of the script pins a hash of the python client)
       NO_SELF_UPGRADE=1;;
-    --no-permissions-check)
-      NO_PERMISSIONS_CHECK=1;;
+    # --no-permissions-check)
+      # NO_PERMISSIONS_CHECK=1;;
     --no-bootstrap)
       NO_BOOTSTRAP=1;;
     --help)
@@ -178,7 +178,7 @@ SetRootAuthMechanism() {
       '')
         # If we're not running with root, don't check that this script can only
         # be modified by system users and groups.
-        NO_PERMISSIONS_CHECK=1
+        # NO_PERMISSIONS_CHECK=1
         ;;
       *)
         error "Error: unknown root authorization mechanism '$LE_AUTO_SUDO'."
@@ -1060,9 +1060,9 @@ UNLIKELY_EOF
 
 # Check that the given PATH_TO_CHECK has secured permissions.
 # Parameters: LE_PYTHON, PATH_TO_CHECK
-CheckPathPermissions() {
-    "$1" - "$2" << "UNLIKELY_EOF"
-"""Verifies certbot-auto cannot be modified by unprivileged users.
+# CheckPathPermissions() {
+    # "$1" - "$2" << "UNLIKELY_EOF"
+# """Verifies certbot-auto cannot be modified by unprivileged users.
 
 This script takes the path to certbot-auto as its only command line
 argument.  It then checks that the file can only be modified by uid/gid
