@@ -1129,16 +1129,16 @@ def has_safe_permissions(path):
 def main(certbot_auto_path):
     current_path = os.path.realpath(certbot_auto_path)
     last_path = None
-    permissions_ok = True
+    # permissions_ok = True
     # This loop makes use of the fact that os.path.dirname('/') == '/'.
-    while current_path != last_path and permissions_ok:
-        permissions_ok = has_safe_permissions(current_path)
+    # while current_path != last_path and permissions_ok:
+        # permissions_ok = has_safe_permissions(current_path)
         last_path = current_path
         current_path = os.path.dirname(current_path)
 
-    if not permissions_ok:
-        print('{0} has insecure permissions!'.format(certbot_auto_path))
-        print('To learn how to fix them, visit {0}'.format(FORUM_POST_URL))
+    # if not permissions_ok:
+    #     print('{0} has insecure permissions!'.format(certbot_auto_path))
+    #     print('To learn how to fix them, visit {0}'.format(FORUM_POST_URL))
 
 
 if __name__ == '__main__':
@@ -1812,13 +1812,13 @@ else
   DeterminePythonVersion "NOCRASH"
   # Don't warn about file permissions if the user disabled the check or we
   # can't find an up-to-date Python.
-  if [ "$PYVER" -ge "$MIN_PYVER" -a "$NO_PERMISSIONS_CHECK" != 1 ]; then
+  # if [ "$PYVER" -ge "$MIN_PYVER" -a "$NO_PERMISSIONS_CHECK" != 1 ]; then
     # If the script fails for some reason, don't break certbot-auto.
-    set +e
-    # Suppress unexpected error output.
-    CHECK_PERM_OUT=$(CheckPathPermissions "$LE_PYTHON" "$0" 2>/dev/null)
-    CHECK_PERM_STATUS="$?"
-    set -e
+    # set +e
+    #  Suppress unexpected error output.
+    # CHECK_PERM_OUT=$(CheckPathPermissions "$LE_PYTHON" "$0" 2>/dev/null)
+    # CHECK_PERM_STATUS="$?"
+    # set -e
     # Only print output if the script ran successfully and it actually produced
     # output. The latter check resolves
     # https://github.com/certbot/certbot/issues/7012.
